@@ -1,0 +1,16 @@
+version: "3"
+
+services:
+  openai:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - MODEL=${MODEL:-gpt-4o}
+      - PRE_PROMPT=${PRE_PROMPT:-You are a helpful assistant.}
+      - TEMPERATURE=${TEMPERATURE:-1}
+      - MAX_TOKENS=${MAX_TOKENS:-150}
+      - PROMPT=${PROMPT:-}
+    env_file:
+      - .env
